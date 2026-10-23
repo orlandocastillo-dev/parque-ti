@@ -28,6 +28,15 @@ jobs:
           dotnet-version: 10.0.x
       - run: dotnet restore
       - run: dotnet build --no-restore -c Release
-      - run: dotnet test --no-build -c Release --logger GitHubActions --logger "console;verbosity=normal"
+      - run: dotnet test --no-build -c Release --logger GitHubActions --logger "trx;LogFileName=pruebas.trx" --results-directory resultados
+      - name: Conteo de pruebas
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import glob, xml.etree.ElementTree as ET
+          for f in glob.glob("resultados/**/*.trx", recursive=True):
+              c = ET.parse(f).getroot().find(".//{*}Counters").attrib
+              print(f"::notice title=Pruebas::{c['passed']} de {c['total']} pasaron ({c['failed']} fallaron)")
+          PY
       - name: Imagen de Docker (la misma que usa Render)
         run: docker build -t parque-ti-api .
