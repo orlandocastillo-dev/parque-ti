@@ -30,7 +30,29 @@
               }
             ],
             "styles": [
+              "node_modules/@ionic/angular/css/core.css",
+              "node_modules/@ionic/angular/css/normalize.css",
+              "node_modules/@ionic/angular/css/structure.css",
+              "node_modules/@ionic/angular/css/typography.css",
+              "node_modules/@ionic/angular/css/padding.css",
+              "node_modules/@ionic/angular/css/display.css",
+              "node_modules/@fontsource/ibm-plex-sans/400.css",
+              "node_modules/@fontsource/ibm-plex-sans/500.css",
+              "node_modules/@fontsource/ibm-plex-sans/600.css",
+              "node_modules/@fontsource/ibm-plex-sans/700.css",
+              "node_modules/@fontsource/ibm-plex-mono/500.css",
+              "node_modules/@fontsource/ibm-plex-mono/600.css",
               "src/styles.scss"
+            ],
+            "allowedCommonJsDependencies": [
+              "jsqr",
+              "qrcode",
+              "canvg",
+              "core-js",
+              "raf",
+              "rgbcolor",
+              "html2canvas",
+              "dompurify"
             ]
           },
           "configurations": {
@@ -38,8 +60,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1.3MB",
+                  "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",

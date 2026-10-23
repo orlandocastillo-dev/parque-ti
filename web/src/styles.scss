@@ -1,1 +1,1165 @@
-/* You can add global styles to this file, and also import other style files */
+/* Parque TI: grafito, papel y el amarillo de las etiquetas de inventario */
+:root {
+  --grafito: #1b2027;
+  --grafito-2: #2a313b;
+  --papel: #eceee9;
+  --blanco: #ffffff;
+  --linea: #d6d9d2;
+  --texto: #1b2027;
+  --gris: #5d646d;
+  --amarillo: #f2b705;
+  --amarillo-suave: #fdf3cf;
+
+  --disponible: #2f6f4e;
+  --asignado: #2456b8;
+  --reparacion: #c2410c;
+  --baja: #6b7079;
+
+  --ion-font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --ion-background-color: var(--papel);
+  --ion-text-color: var(--texto);
+  --ion-toolbar-background: var(--grafito);
+  --ion-toolbar-color: #fff;
+  --ion-item-background: transparent;
+  --ion-border-color: var(--linea);
+
+  --ion-color-primary: #1b2027;
+  --ion-color-primary-rgb: 27, 32, 39;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #181c22;
+  --ion-color-primary-tint: #32363d;
+
+  --ion-color-dark: #1b2027;
+  --ion-color-dark-rgb: 27, 32, 39;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #181c22;
+  --ion-color-dark-tint: #32363d;
+}
+
+body {
+  background: var(--papel);
+  -webkit-font-smoothing: antialiased;
+}
+.mono,
+.mono input {
+  font-family: var(--mono) !important;
+}
+a {
+  color: inherit;
+}
+h1,
+h2 {
+  letter-spacing: -0.01em;
+}
+
+/* La barra de arriba */
+ion-toolbar {
+  --min-height: 58px;
+  --border-width: 0 !important;
+}
+ion-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+ion-toolbar.filtros {
+  --background: var(--grafito-2);
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --min-height: 50px;
+}
+ion-toolbar.filtros ion-searchbar {
+  --background: #3a424d;
+  --color: #fff;
+  --placeholder-color: #b9bec6;
+  --icon-color: #b9bec6;
+  --border-radius: 4px;
+  --box-shadow: none;
+  padding: 6px 0;
+}
+ion-toolbar.filtros ion-segment {
+  --background: transparent;
+}
+ion-toolbar.filtros ion-segment-button {
+  --color: #b9bec6;
+  --color-checked: #fff;
+  --indicator-color: var(--amarillo);
+  --indicator-height: 3px;
+  text-transform: none;
+  font-weight: 500;
+  letter-spacing: 0;
+  min-width: auto;
+}
+ion-segment-button {
+  text-transform: none;
+  letter-spacing: 0;
+}
+ion-button {
+  --border-radius: 4px;
+  --box-shadow: none;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+ion-fab-button {
+  --background: var(--amarillo);
+  --background-activated: #d9a400;
+  --background-hover: #e5ad04;
+  --color: var(--grafito);
+  --border-radius: 6px;
+  --box-shadow: 0 4px 0 var(--grafito);
+}
+
+/* Menú lateral */
+.menu {
+  --background: var(--grafito);
+  --color: #e6e8eb;
+}
+.menu__marca {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 22px 18px 18px;
+  border-bottom: 1px solid #343b46;
+}
+.menu__marca strong {
+  display: block;
+  font-size: 1.15rem;
+  color: #fff;
+}
+.menu__marca small {
+  color: #9aa1aa;
+  font-size: 0.8rem;
+}
+.menu__logo {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border-radius: 4px;
+  background:
+    linear-gradient(var(--grafito), var(--grafito)) 7px 9px / 20px 12px no-repeat,
+    linear-gradient(var(--grafito), var(--grafito)) 11px 24px / 12px 3px no-repeat,
+    var(--amarillo);
+}
+.menu ion-list {
+  background: transparent;
+  padding: 10px 8px;
+}
+.menu ion-item {
+  --color: #c9cdd3;
+  --border-radius: 4px;
+  --min-height: 46px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.menu ion-item ion-icon {
+  color: #8f97a1;
+  margin-inline-end: 14px;
+}
+.menu ion-item.activo {
+  --background: #2d343e;
+  --color: #fff;
+  box-shadow: inset 3px 0 0 var(--amarillo);
+}
+.menu ion-item.activo ion-icon {
+  color: var(--amarillo);
+}
+.menu__usuario {
+  margin: 12px 18px;
+  padding-top: 16px;
+  border-top: 1px solid #343b46;
+  display: grid;
+  gap: 2px;
+}
+.menu__rol {
+  font: 600 0.7rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--amarillo);
+}
+.menu__usuario strong {
+  color: #fff;
+}
+.menu__usuario button {
+  justify-self: start;
+  margin-top: 8px;
+  padding: 6px 0;
+  background: none;
+  border: 0;
+  color: #9aa1aa;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+ion-split-pane {
+  --side-width: 250px;
+  --border: 0;
+}
+
+/* Páginas */
+.pagina {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 18px 16px 96px;
+}
+.cargando {
+  display: grid;
+  place-items: center;
+  padding: 64px 0;
+}
+.vacio {
+  color: var(--gris);
+  padding: 8px 0;
+  list-style: none;
+}
+.vacio--grande {
+  text-align: center;
+  padding: 48px 0;
+}
+.conteo {
+  margin: 0 0 10px;
+  color: var(--gris);
+  font: 500 0.8rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.bloque {
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: 4px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+.bloque h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gris);
+}
+.bloque__n {
+  font-family: var(--mono);
+  background: var(--grafito);
+  color: #fff;
+  padding: 1px 7px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+}
+.bloque__pie {
+  margin: 12px 0 0;
+  color: var(--gris);
+  font-size: 0.88rem;
+}
+.columnas {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.columnas .bloque {
+  margin-bottom: 0;
+}
+@media (min-width: 860px) {
+  .columnas {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.ayuda {
+  color: var(--gris);
+  font-size: 0.92rem;
+}
+.error {
+  color: #b42318;
+  font-weight: 500;
+}
+.enlace {
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  font: inherit;
+  font-weight: 600;
+  color: var(--asignado);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.enlace--peligro {
+  color: #b42318;
+}
+.zona-baja {
+  text-align: center;
+  margin-top: 24px;
+}
+.zona-baja ion-icon {
+  vertical-align: -2px;
+}
+
+/* La etiqueta del equipo: placa negra con el código */
+.placa {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: none;
+  min-width: 82px;
+  padding: 3px 8px 4px;
+  border-radius: 3px;
+  background: var(--grafito);
+  color: #fff;
+  font: 600 0.9rem/1.1 var(--mono);
+  letter-spacing: 0.04em;
+  box-shadow: inset 0 0 0 1px #3d4550, inset 0 -3px 0 var(--amarillo);
+}
+.placa i {
+  font-style: normal;
+  font-size: 0.5rem;
+  letter-spacing: 0.14em;
+  color: #9aa1aa;
+}
+.placa--grande {
+  min-width: 0;
+  padding: 6px 14px 9px;
+  font-size: 1.5rem;
+}
+.placa--grande i {
+  font-size: 0.6rem;
+}
+
+/* Estado del equipo */
+.estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--c);
+}
+.estado::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--c);
+}
+.estado[data-estado='Disponible'] { --c: var(--disponible); }
+.estado[data-estado='Asignado'] { --c: var(--asignado); }
+.estado[data-estado='EnReparacion'] { --c: var(--reparacion); }
+.estado[data-estado='DeBaja'] { --c: var(--baja); }
+
+/* Resumen */
+.cifras {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+@media (min-width: 720px) {
+  .cifras {
+    grid-template-columns: 1.3fr repeat(4, 1fr);
+  }
+}
+.cifra {
+  display: grid;
+  gap: 2px;
+  padding: 14px 16px;
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-top: 4px solid var(--c, var(--grafito));
+  border-radius: 4px;
+  text-decoration: none;
+}
+.cifra[data-estado='Disponible'] { --c: var(--disponible); }
+.cifra[data-estado='Asignado'] { --c: var(--asignado); }
+.cifra[data-estado='EnReparacion'] { --c: var(--reparacion); }
+.cifra[data-estado='DeBaja'] { --c: var(--baja); }
+.cifra--total {
+  grid-column: 1 / -1;
+  background: var(--grafito);
+  border-color: var(--grafito);
+  border-top-color: var(--amarillo);
+  color: #fff;
+}
+@media (min-width: 720px) {
+  .cifra--total {
+    grid-column: auto;
+  }
+}
+.cifra__n {
+  font: 600 2rem/1 var(--mono);
+}
+.cifra__t {
+  font-size: 0.85rem;
+  color: var(--gris);
+}
+.cifra--total .cifra__t {
+  color: #b9bec6;
+}
+.alertas,
+.barras,
+.movimientos,
+.historial,
+.tabla-equipos,
+.personas,
+.tarjetas-mant {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.alertas li a {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 9px 0;
+  border-top: 1px solid var(--linea);
+  text-decoration: none;
+  font-size: 0.93rem;
+}
+.alertas li:first-child a {
+  border-top: 0;
+}
+.alertas ion-icon {
+  flex: none;
+  margin-top: 2px;
+  font-size: 1.1rem;
+}
+.alertas [data-tipo='reparacion'] ion-icon { color: var(--reparacion); }
+.alertas [data-tipo='renovar'] ion-icon { color: #a16207; }
+.alertas [data-tipo='preventivo'] ion-icon { color: var(--gris); }
+.barras li {
+  display: grid;
+  grid-template-columns: 22px 90px 1fr 28px;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+}
+.barras ion-icon {
+  color: var(--gris);
+}
+.barras__barra {
+  height: 12px;
+  background: var(--papel);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.barras__barra i {
+  display: block;
+  height: 100%;
+  background: repeating-linear-gradient(-45deg, var(--grafito) 0 6px, #3a424d 6px 9px);
+}
+.barras b {
+  font-family: var(--mono);
+  text-align: right;
+}
+.movimientos li a {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 0;
+  border-top: 1px solid var(--linea);
+  text-decoration: none;
+}
+.movimientos li:first-child a {
+  border-top: 0;
+}
+.movimientos time {
+  color: var(--gris);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* Listas de equipos y personas */
+.tabla-equipos li a,
+.personas li a {
+  display: grid;
+  align-items: center;
+  gap: 6px 14px;
+  padding: 12px 14px;
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-bottom-width: 0;
+  text-decoration: none;
+}
+.tabla-equipos li:last-child a,
+.personas li:last-child a {
+  border-bottom-width: 1px;
+}
+.tabla-equipos li a:hover,
+.personas li a:hover {
+  background: #fafaf7;
+}
+.tabla-equipos li a {
+  grid-template-columns: auto 1fr auto;
+}
+.tabla-equipos__equipo {
+  display: flex;
+  overflow: hidden;
+  gap: 10px;
+  align-items: center;
+  min-width: 0;
+}
+.tabla-equipos__equipo ion-icon {
+  flex: none;
+  font-size: 1.3rem;
+  color: var(--gris);
+}
+.tabla-equipos__equipo > span {
+  min-width: 0;
+}
+.tabla-equipos__equipo strong,
+.tabla-equipos__quien {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tabla-equipos small,
+.personas small {
+  display: block;
+  color: var(--gris);
+  font-size: 0.8rem;
+}
+.tabla-equipos__quien {
+  display: none;
+}
+@media (min-width: 760px) {
+  .tabla-equipos li a {
+    grid-template-columns: auto 1.3fr 1fr 130px;
+  }
+  .tabla-equipos__quien {
+    display: block;
+  }
+}
+@media (max-width: 520px) {
+  .tabla-equipos li a {
+    grid-template-columns: auto 1fr;
+  }
+  .tabla-equipos app-estado {
+    grid-column: 2;
+  }
+}
+
+.personas li a {
+  grid-template-columns: auto 1fr auto;
+}
+.personas__area {
+  display: none;
+  color: var(--gris);
+}
+@media (min-width: 760px) {
+  .personas li a {
+    grid-template-columns: auto 1.3fr 1fr 90px;
+  }
+  .personas__area {
+    display: block;
+  }
+}
+.personas__n {
+  font: 600 1.1rem var(--mono);
+  text-align: right;
+}
+.personas__n small {
+  display: inline;
+  font-family: var(--ion-font-family);
+}
+.personas__n.cero {
+  color: #a3a8ae;
+}
+.personas li.inactivo a {
+  opacity: 0.55;
+}
+.persona {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-decoration: none;
+}
+.persona strong,
+.persona small {
+  display: block;
+}
+.persona small {
+  color: var(--gris);
+  font-size: 0.85rem;
+}
+.persona__inicial {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 4px;
+  background: var(--amarillo-suave);
+  color: #7a5b00;
+  font-weight: 700;
+}
+.persona__inicial--grande {
+  width: 64px;
+  height: 64px;
+  font-size: 1.6rem;
+}
+.barra-lista {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.barra-lista .conteo {
+  margin: 0;
+}
+.nota {
+  margin: 10px 0 0;
+  padding: 8px 10px;
+  background: var(--papel);
+  border-radius: 3px;
+  font-size: 0.9rem;
+  white-space: pre-line;
+}
+
+/* Ficha del equipo */
+.ficha {
+  display: grid;
+  gap: 18px;
+  padding: 20px;
+  margin-bottom: 16px;
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-left: 6px solid var(--c, var(--grafito));
+  border-radius: 4px;
+}
+.ficha[data-estado='Disponible'] { --c: var(--disponible); }
+.ficha[data-estado='Asignado'] { --c: var(--asignado); }
+.ficha[data-estado='EnReparacion'] { --c: var(--reparacion); }
+.ficha[data-estado='DeBaja'] { --c: var(--baja); }
+@media (min-width: 720px) {
+  .ficha {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+}
+.ficha h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 12px;
+  font-size: 1.5rem;
+}
+.ficha h1 ion-icon {
+  color: var(--gris);
+}
+.ficha dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px 20px;
+  margin: 0;
+}
+.ficha dt {
+  font: 500 0.7rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gris);
+}
+.ficha dd {
+  margin: 2px 0 0;
+  font-weight: 500;
+}
+.ficha dd small {
+  color: var(--gris);
+}
+.ficha__notas {
+  margin: 14px 0 0;
+  color: var(--gris);
+  white-space: pre-line;
+}
+.ficha__qr {
+  margin: 0;
+  justify-self: start;
+  text-align: center;
+  padding: 10px;
+  border: 1px dashed #b9bdb4;
+  border-radius: 4px;
+}
+.ficha__qr img {
+  display: block;
+}
+.ficha__qr figcaption {
+  margin-top: 6px;
+  max-width: 132px;
+  font-size: 0.72rem;
+  color: var(--gris);
+}
+.ficha--persona {
+  grid-template-columns: auto 1fr !important;
+  align-items: center;
+}
+.ficha--persona h1 {
+  margin: 0 0 4px;
+}
+.ficha--persona p {
+  margin: 2px 0;
+  color: var(--gris);
+}
+.etiqueta-inactivo {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--papel);
+  color: var(--texto) !important;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-radius: 3px;
+}
+.reparacion {
+  padding: 12px 14px;
+  background: #fff4ed;
+  border-left: 4px solid var(--reparacion);
+}
+.reparacion strong {
+  color: var(--reparacion);
+}
+.reparacion p {
+  margin: 6px 0 4px;
+}
+.reparacion small {
+  color: var(--gris);
+}
+.historial {
+  margin-top: 8px;
+}
+.historial li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0 12px 16px;
+  border-left: 2px solid var(--linea);
+  position: relative;
+}
+.historial li::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 17px;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--linea);
+}
+.historial li.historial__activa::before {
+  background: var(--amarillo);
+}
+.historial strong,
+.historial small {
+  display: block;
+}
+.historial small {
+  color: var(--gris);
+  font-size: 0.83rem;
+  margin-top: 2px;
+}
+.historial p {
+  margin: 6px 0 0;
+  font-size: 0.9rem;
+  white-space: pre-line;
+}
+
+/* Formularios en ventanas */
+.formulario {
+  display: grid;
+  gap: 14px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.formulario__fila {
+  display: grid;
+  gap: 14px;
+}
+@media (min-width: 560px) {
+  .formulario__fila {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.formulario__equipo {
+  margin: 0;
+  font-weight: 600;
+}
+.pie-modal {
+  display: grid;
+  gap: 10px;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: var(--blanco);
+  border-top: 1px solid var(--linea);
+}
+ion-modal ion-content {
+  --background: var(--blanco);
+}
+ion-input,
+ion-textarea,
+ion-select {
+  --border-radius: 4px !important;
+}
+
+/* Mantenimientos */
+.tarjetas-mant {
+  display: grid;
+  gap: 10px;
+}
+.tarjetas-mant li:not(.vacio) {
+  padding: 14px 16px;
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: 4px;
+}
+.tarjetas-mant li.abierto {
+  border-left: 4px solid var(--reparacion);
+}
+.tarjetas-mant__equipo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 600;
+}
+.tarjetas-mant p {
+  margin: 8px 0 0;
+}
+.tarjetas-mant__tipo {
+  font-size: 0.82rem;
+  color: var(--gris);
+}
+.tarjetas-mant__resultado {
+  color: var(--disponible);
+}
+.tarjetas-mant ion-button {
+  margin-top: 10px;
+}
+
+/* Escáner */
+.escanear {
+  max-width: 560px;
+}
+.visor {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  max-height: 62vh;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--grafito);
+}
+@media (min-width: 760px) {
+  .visor {
+    aspect-ratio: 4 / 3;
+  }
+}
+.visor video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.visor__marco {
+  position: absolute;
+  inset: 22% 18%;
+  border: 3px solid var(--amarillo);
+  border-radius: 8px;
+  box-shadow: 0 0 0 100vmax rgb(27 32 39 / 0.45);
+  pointer-events: none;
+}
+.visor[data-estado='apagada'] .visor__marco,
+.visor[data-estado='error'] .visor__marco {
+  display: none;
+}
+.visor__aviso {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 8px;
+  padding: 24px;
+  text-align: center;
+  color: #d7dade;
+}
+.visor__aviso > ion-icon {
+  font-size: 4rem;
+  color: var(--amarillo);
+}
+.visor__aviso ion-button {
+  --background: var(--amarillo);
+  --color: var(--grafito);
+}
+.visor__pista {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 3px;
+  background: rgb(27 32 39 / 0.85);
+  color: #fff;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.manual {
+  margin-top: 18px;
+}
+.manual p {
+  margin: 0 0 8px;
+  color: var(--gris);
+}
+.manual__fila {
+  display: flex;
+  gap: 8px;
+}
+.manual__fila ion-input {
+  --background: var(--blanco);
+}
+
+/* Etiquetas para imprimir */
+.hoja-etiquetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+}
+.etiqueta {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  background: var(--blanco);
+  border: 1px dashed #9ea39b;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.etiqueta.fuera {
+  opacity: 0.4;
+}
+.etiqueta ion-checkbox {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+.etiqueta__texto {
+  display: grid;
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+.etiqueta__texto small {
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  color: var(--gris);
+}
+.etiqueta__texto b {
+  font-size: 1.35rem;
+  letter-spacing: 0.03em;
+}
+
+@media print {
+  .no-imprimir,
+  ion-menu,
+  ion-header {
+    display: none !important;
+  }
+  ion-split-pane {
+    --side-width: 0;
+  }
+  ion-content {
+    --background: #fff;
+  }
+  .pagina {
+    padding: 0;
+    max-width: none;
+  }
+  .hoja-etiquetas {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+  }
+  .etiqueta {
+    break-inside: avoid;
+    border-color: #999;
+  }
+  .etiqueta.fuera {
+    display: none;
+  }
+}
+
+/* Pantalla de entrada */
+.entrar {
+  --background: var(--grafito);
+}
+.entrar__caja {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(28px, 8vh, 72px) 20px 48px;
+  color: #e6e8eb;
+}
+.entrar__marca {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font: 600 0.85rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+}
+.entrar h1 {
+  margin: 26px 0 12px;
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  line-height: 1.1;
+  color: #fff;
+}
+.entrar__texto {
+  color: #b9bec6;
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+.entrar h2 {
+  margin: 28px 0 12px;
+  font: 600 0.78rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--amarillo);
+}
+.servidor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 10px 14px;
+  border: 1px solid #3a424d;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #b9bec6;
+}
+.servidor ion-spinner {
+  color: var(--amarillo);
+  flex: none;
+}
+.servidor__punto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #4ade80;
+}
+.servidor button {
+  margin-left: auto;
+  background: none;
+  border: 1px solid #5d646d;
+  border-radius: 3px;
+  color: #fff;
+  padding: 4px 10px;
+  font: inherit;
+  cursor: pointer;
+}
+.entrar__roles {
+  display: grid;
+  gap: 10px;
+}
+@media (min-width: 560px) {
+  .entrar__roles {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.rol {
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+  padding: 16px;
+  text-align: left;
+  background: #fff;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 0 var(--amarillo);
+  color: var(--grafito);
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.rol:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--amarillo);
+}
+.rol:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.rol ion-icon {
+  font-size: 1.6rem;
+}
+.rol strong {
+  font-size: 1.05rem;
+}
+.rol span {
+  color: var(--gris);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+.entrar__nota {
+  margin-top: 14px;
+  color: #8f97a1;
+  font-size: 0.85rem;
+}
+.entrar__cuenta {
+  margin-top: 22px;
+  border-top: 1px solid #343b46;
+  padding-top: 14px;
+}
+.entrar__cuenta summary {
+  cursor: pointer;
+  color: #b9bec6;
+}
+.entrar__cuenta form {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+.entrar__cuenta ion-input {
+  --background: #fff;
+  --color: var(--grafito);
+}
+.entrar__cuenta ion-button {
+  --background: var(--amarillo);
+  --color: var(--grafito);
+}
+.entrar__error {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: #fee4e2;
+  color: #7a271a;
+  border-radius: 4px;
+}
+
+/* Avisos */
+ion-toast.aviso {
+  --border-radius: 4px;
+  --color: #fff;
+}
+ion-toast.aviso--ok {
+  --background: var(--grafito);
+}
+ion-toast.aviso--error {
+  --background: #b42318;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rol {
+    transition: none;
+  }
+}
+
+ion-button.boton-amarillo {
+  --background: var(--amarillo);
+  --background-hover: #e5ad04;
+  --color: var(--grafito);
+}

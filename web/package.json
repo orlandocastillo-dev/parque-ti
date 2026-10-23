@@ -1,12 +1,12 @@
 {
-  "name": "web",
+  "name": "parque-ti-web",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test --watch=false"
   },
   "private": true,
   "packageManager": "npm@10.9.4",
