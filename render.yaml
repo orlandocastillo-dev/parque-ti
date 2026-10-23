@@ -1,0 +1,17 @@
+# Configuración de Render: crea la API en C# desde este repositorio (New → Blueprint)
+services:
+  - type: web
+    name: parque-ti-api
+    runtime: docker
+    plan: free
+    rootDir: api
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /salud
+    autoDeploy: true
+    envVars:
+      - key: ConnectionStrings__Parque
+        sync: false
+      - key: Jwt__Clave
+        generateValue: true
+      - key: Cors__Origenes
+        value: https://parque-ti.vercel.app
